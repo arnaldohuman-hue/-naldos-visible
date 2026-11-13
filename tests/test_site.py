@@ -27,6 +27,9 @@ PHONE_DISPLAY = "079 695 1572"
 PHONE_TEL = "tel:+27796951572"
 WHATSAPP_URL = "https://wa.me/27796951572"
 WHATSAPP_LABEL = f"WhatsApp {PHONE_DISPLAY}"
+EMAIL = "arnaldohuman@gmail.com"
+MAILTO = f"mailto:{EMAIL}"
+EMAIL_LABEL = f"Email {EMAIL}"
 MANAGER = "Rhenvin Human"
 ADDRESS_LINES = ("12 Rewlatch Road", "Rewlatch 2197", "Johannesburg")
 BUSINESS = "Naldo's Roller Shutter Doors, Automotive & Steel Works"
@@ -55,7 +58,6 @@ SOLAR_FULL = (
 GATE_MOTOR_FULL = "images/gate-motor-installation.jpg"
 
 FORBIDDEN_MARKERS = (
-    "mailto:",
     "testimonial",
     "accreditation",
     "accredited",
@@ -323,6 +325,52 @@ def check_whatsapp(doc: Node, raw: str) -> None:
     check(WHATSAPP_URL in region('id="contact"', "<footer"), "WhatsApp link missing from the contact section")
 
 
+def check_email(doc: Node, raw: str) -> None:
+    """Allow only Rhenvin Human's published email address."""
+    links = [
+        node
+        for node in doc.find_all("a")
+        if node.attrs.get("href", "").lower().startswith("mailto:")
+    ]
+    check(links, "email contact link is missing")
+    for node in links:
+        href = node.attrs.get("href", "")
+        check(href == MAILTO, f"only {MAILTO} is allowed, found {href}")
+        check(
+            node.attrs.get("aria-label", "").strip() == EMAIL_LABEL,
+            "email link needs an accessible label with the address",
+        )
+        visible = re.sub(r"\s+", " ", node.text()).strip()
+        check(
+            visible in {EMAIL, "Email", EMAIL_LABEL},
+            f"unexpected email link text: {visible!r}",
+        )
+        classes = set(node.attrs.get("class", "").split())
+        check(classes & {"btn", "tel"}, "email link should use the existing button or contact link style")
+        icons = node.find_all("svg")
+        check(len(icons) == 1, "email link needs one envelope icon")
+        check(icons[0].attrs.get("aria-hidden") == "true", "email icon should be hidden from assistive tech")
+
+    addresses = re.findall(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", raw)
+    check(addresses, "email address missing from the page")
+    check(all(found == EMAIL for found in addresses), f"unexpected email address: {addresses}")
+    mailtos = re.findall(r"mailto:[^\s\"'<>]+", raw, flags=re.I)
+    check(mailtos and all(found == MAILTO for found in mailtos), f"unexpected mailto link: {mailtos}")
+    check(raw.count(MAILTO) == len(links), "mailto appears outside the allowed links")
+
+    def region(start: str, end: str) -> str:
+        begin = raw.find(start)
+        finish = raw.find(end, begin + len(start)) if begin != -1 else -1
+        check(begin != -1 and finish != -1, f"could not find {start} … {end}")
+        return raw[begin:finish]
+
+    check(MAILTO in region("<header", "<section"), "email link missing from the header")
+    check(MAILTO in region('class="hero"', 'id="main"'), "email link missing from the hero")
+    contact = region('id="contact"', "<footer")
+    check(MAILTO in contact, "email link missing from the contact section")
+    check(EMAIL in contact, "email address missing from the contact section")
+
+
 def main() -> None:
     check(INDEX.is_file(), "index.html is missing")
     raw = INDEX.read_text(encoding="utf-8")
@@ -332,7 +380,6 @@ def main() -> None:
     lowered_raw = raw.lower()
     for marker in FORBIDDEN_MARKERS:
         check(marker not in lowered_raw, f"forbidden marker present: {marker}")
-    check(not re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", raw), "an email address was added")
 
     parser = TreeParser()
     parser.feed(raw)
@@ -367,7 +414,12 @@ def main() -> None:
         check(line in text, f"address line missing: {line}")
     for service in SERVICES:
         check(service in text, f"service missing: {service}")
-    check("Email will be added once confirmed." in text, "email note was changed")
+    check("Email will be added once confirmed." not in text, "email is still described as unconfirmed")
+    check(
+        "Call or email to confirm whether we can assist with your job and location." in text,
+        "contact note was not updated for email",
+    )
+    check(EMAIL in text, "email address is not shown")
     check("Solar" in text, "solar service text missing")
 
     tel_links = [
@@ -378,6 +430,7 @@ def main() -> None:
     check(tel_links, "no telephone links")
     check(all(href == PHONE_TEL for href in tel_links), f"unexpected tel links: {tel_links}")
     check_whatsapp(doc, raw)
+    check_email(doc, raw)
 
     main = doc.find_all("main")
     check(len(main) == 1 and main[0].attrs.get("id") == "main", "main landmark missing")
