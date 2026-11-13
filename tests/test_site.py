@@ -40,7 +40,17 @@ SERVICES = (
     "Custom Steel Structures",
 )
 
-GALLERY_COUNT = 20
+GALLERY_COUNT = 25
+
+FILTERS = ("all", "shutters", "steel", "gates", "railings", "solar")
+
+SOLAR_FULL = (
+    "images/solar-home-installation.jpg",
+    "images/solar-panels-roof-mounting.jpg",
+    "images/solar-inverter-battery-finished.jpg",
+    "images/solar-inverter-battery-wip.jpg",
+)
+GATE_MOTOR_FULL = "images/gate-motor-installation.jpg"
 
 FORBIDDEN_MARKERS = (
     "whatsapp",
@@ -351,13 +361,21 @@ def main() -> None:
     # Gallery photos are the thumbnails inside project cards. Full files are linked for the lightbox.
     cards = [node for node in doc.find_all("figure") if "project-card" in node.attrs.get("class", "")]
     check(len(cards) == GALLERY_COUNT, f"expected {GALLERY_COUNT} gallery cards, found {len(cards)}")
+    indexes = [int(card.attrs.get("data-index", "-1")) for card in cards]
+    check(indexes == list(range(GALLERY_COUNT)), f"data-index is not sequential: {indexes}")
+    filter_buttons = [node for node in doc.find_all("button") if node.attrs.get("data-filter")]
+    filter_values = [node.attrs["data-filter"] for node in filter_buttons]
+    check(filter_values == list(FILTERS), f"filter buttons are {filter_values}")
+    solar_filter = filter_buttons[-1]
+    check(solar_filter.text().strip() == "Solar installations", "solar filter label changed")
     full_sources: list[str] = []
     for card in cards:
         images_in_card = card.find_all("img")
         check(len(images_in_card) == 1, "each gallery card needs one visible image")
         alt = images_in_card[0].attrs.get("alt", "").strip()
         check(alt, "gallery image alt is empty")
-        check("solar" not in alt.lower(), f"gallery alt invents a solar photo: {alt}")
+        category = card.attrs.get("data-category", "")
+        check(category in FILTERS, f"gallery category has no filter: {category}")
         thumb = images_in_card[0].attrs["src"]
         check(thumb.startswith("images/") and thumb.endswith("-thumb.jpg"), f"gallery thumb path {thumb}")
         buttons = [node for node in card.find_all("button") if "open" in node.attrs.get("class", "")]
@@ -368,9 +386,22 @@ def main() -> None:
         assert_relative_asset(full, "data-full")
         check((ROOT / full).is_file(), f"missing full image {full}")
         jpeg_size(ROOT / full)
-        check("solar" not in full.lower() and "solar" not in thumb.lower(), "solar image file was added")
+        if category == "solar":
+            check("solar" in full.lower() and "solar" in thumb.lower(), f"solar card path {full}")
+        else:
+            check("solar" not in alt.lower(), f"gallery alt invents a solar photo: {alt}")
+            check("solar" not in full.lower() and "solar" not in thumb.lower(), "solar image on a non-solar card")
         full_sources.append(full)
     check(len(set(full_sources)) == GALLERY_COUNT, "gallery full images are not unique")
+    for solar_full in SOLAR_FULL:
+        check(solar_full in full_sources, f"missing solar gallery photo {solar_full}")
+    check(GATE_MOTOR_FULL in full_sources, "missing gate motor gallery photo")
+    gate_cards = [
+        card
+        for card in cards
+        if any(node.attrs.get("data-full") == GATE_MOTOR_FULL for node in card.find_all("button"))
+    ]
+    check(len(gate_cards) == 1 and gate_cards[0].attrs.get("data-category") == "gates", "gate motor card category")
 
     hero = [image for image in images if image.attrs.get("src") == "images/hero-embed.jpg"]
     check(len(hero) == 1, "hero image missing")
