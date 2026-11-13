@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Naldo's Roller Shutter Doors, Automotive &amp; Steel Works in Rewlatch, Johannesburg. Roller shutter doors, steel gates, welding, automotive repairs, garage doors, burglar bars and solar panel installations. Call 079 695 1572.">
+<title>Naldo's Roller Shutter Doors, Automotive &amp; Steel Works</title>
+<style>
+:root {
+  --charcoal: #1b1f24;
+  --charcoal-2: #252a31;
+  --silver: #c5ccd6;
+  --silver-2: #e8ebf0;
+  --red: #c1121f;
+  --red-hot: #e11d2e;
+  --red-text: #ff6b75;
+  --ink: #101318;
+  --muted: #a7b0bc;
+  --card: #22272e;
+  --line: rgba(197,204,214,.18);
+  --radius: 14px;
+  --shadow: 0 18px 40px rgba(0,0,0,.35);
+  --max: 1120px;
+  --font: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:6rem}
+section[id],#main,#top{scroll-margin-top:6rem}
+body{margin:0;font-family:var(--font);color:var(--silver-2);background:var(--charcoal);line-height:1.6}
+img{max-width:100%;display:block;opacity:1;visibility:visible}
+a{color:inherit}
+.wrap{width:min(var(--max),92%);margin:0 auto}
+.skip{position:absolute;left:-999px;top:auto}
+.skip:focus{left:16px;top:16px;background:var(--red);color:#fff;padding:8px 12px;z-index:99;border-radius:8px;text-decoration:none}
+.site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(27,31,36,.94);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+.brand{display:flex;flex-direction:column;gap:2px;text-decoration:none;min-width:0}
+.brand-name{font-weight:900;letter-spacing:.04em;font-size:1.15rem}
+.brand-sub{color:var(--red-text);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.35}
+.nav-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-desktop{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.nav-desktop a{text-decoration:none;color:var(--silver);font-size:.92rem}
+.nav-desktop a:hover,.nav-desktop a:focus{color:#fff}
+.nav-mobile{display:none;position:relative}
+.nav-mobile summary{list-style:none;cursor:pointer;border:1px solid var(--line);background:var(--charcoal-2);color:var(--silver-2);border-radius:999px;padding:10px 14px;font-weight:700;font-size:.9rem}
+.nav-mobile summary::-webkit-details-marker{display:none}
+.nav-mobile summary::after{content:" ▾";color:var(--red-text)}
+.nav-mobile[open] summary::after{content:" ▴"}
+.nav-mobile-panel{position:absolute;right:0;top:calc(100% + 8px);min-width:200px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:8px;display:grid;gap:2px;z-index:60}
+.nav-mobile-panel a{text-decoration:none;color:var(--silver-2);padding:10px 12px;border-radius:8px;font-size:.95rem}
+.nav-mobile-panel a:hover,.nav-mobile-panel a:focus{background:rgba(193,18,31,.18);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--red),var(--red-hot));color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:999px;border:0;box-shadow:0 10px 24px rgba(193,18,31,.35);transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;font:inherit}
+.btn:hover,.btn:focus{transform:translateY(-2px);box-shadow:0 14px 28px rgba(193,18,31,.45)}
+.btn.ghost{background:transparent;border:1px solid var(--silver);color:var(--silver-2);box-shadow:none}
+.btn.small{padding:10px 14px;font-size:.88rem}
+.hero{position:relative;overflow:hidden;padding:88px 0 64px;background:var(--charcoal)}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-scrim{position:absolute;inset:0;background:
+  linear-gradient(105deg, rgba(27,31,36,.92) 0%, rgba(27,31,36,.78) 42%, rgba(27,31,36,.45) 70%, rgba(27,31,36,.55) 100%),
+  linear-gradient(0deg, rgba(27,31,36,.55), transparent 40%);
+  z-index:1}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{color:var(--red-text);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.88rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.05;margin:12px 0 14px;max-width:14ch;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero h1 span{color:var(--silver)}
+.hero p{max-width:560px;color:#d5dbe3;font-size:1.08rem;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.metal-bar{height:4px;width:84px;border-radius:999px;background:linear-gradient(90deg,var(--red),var(--silver),var(--charcoal-2));margin:14px 0 18px}
+.location-chip{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--silver);font-size:.9rem;backdrop-filter:blur(6px)}
+section{padding:64px 0}
+section h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0 10px}
+.lead{color:var(--muted);max-width:620px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 18px 18px;position:relative;overflow:hidden;box-shadow:var(--shadow);transition:transform .22s ease,border-color .22s ease}
+.card:hover{transform:translateY(-5px);border-color:rgba(193,18,31,.55)}
+.card-accent{position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(var(--red),var(--silver))}
+.card h3{margin:0 0 8px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.about{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+.filters button{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--silver);padding:8px 14px;border-radius:999px;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
+.filters button:hover,.filters button:focus{border-color:rgba(193,18,31,.55);color:#fff}
+.filters button[aria-pressed="true"]{background:linear-gradient(135deg,var(--red),var(--red-hot));border-color:transparent;color:#fff}
+.project-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;margin-top:18px}
+.project-card{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .22s ease,border-color .22s ease}
+.project-card:hover{transform:translateY(-4px);border-color:rgba(193,18,31,.5)}
+.project-card.is-hidden{display:none}
+.project-card button.open{all:unset;cursor:pointer;display:block;width:100%}
+.project-card button.open:focus-visible{outline:2px solid var(--red-text);outline-offset:2px}
+.project-card .thumb{aspect-ratio:4/3;background:#161a1f;overflow:hidden}
+.project-card .thumb img{width:100%;height:100%;object-fit:cover}
+.project-card figcaption{padding:14px 16px 16px}
+.project-card h3{margin:0 0 6px;color:var(--red-text);font-size:1.02rem}
+.project-card p{margin:0;color:var(--muted);font-size:.92rem}
+.contact{background:var(--charcoal-2);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow)}
+.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;margin-top:18px}
+.contact dl{margin:0;display:grid;gap:14px}
+.contact dt{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red-text)}
+.contact dd{margin:2px 0 0;font-size:1.05rem;color:var(--silver-2)}
+.contact a.tel{color:#fff;font-weight:800;text-decoration:none;border-bottom:1px solid rgba(225,29,46,.55)}
+.contact a.tel:hover,.contact a.tel:focus{color:var(--red-text)}
+.note{margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(197,204,214,.06);border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.site-footer{border-top:1px solid var(--line);padding:22px 0 34px;color:var(--muted);font-size:.86rem}
+.site-footer strong{color:var(--silver);font-weight:700}
+.reveal{opacity:1;transform:none}
+.reveal.is-visible{opacity:1;transform:none}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(8,10,12,.88);display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.is-open{display:flex}
+.lightbox-inner{position:relative;width:min(960px,96vw);max-height:92vh;display:flex;flex-direction:column;gap:10px}
+.lightbox-inner img{width:100%;max-height:72vh;object-fit:contain;background:#0d1014;border-radius:12px}
+.lightbox-cap{color:var(--silver-2);text-align:center}
+.lightbox-cap strong{display:block;color:var(--red-text);margin-bottom:4px}
+.lightbox-close,.lightbox-nav{position:absolute;border:1px solid var(--line);background:var(--charcoal-2);color:#fff;border-radius:999px;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+.lightbox-close{top:-8px;right:-8px}
+.lightbox-nav.prev{left:-8px;top:40%}
+.lightbox-nav.next{right:-8px;top:40%}
+.lightbox-close:focus,.lightbox-nav:focus{outline:2px solid var(--red-text);outline-offset:2px}
+@media (max-width:800px){
+  .contact-grid{grid-template-columns:1fr}
+  .nav-desktop{display:none}
+  .nav-mobile{display:block}
+  .hero{padding-top:56px}
+  .brand-sub{font-size:.68rem;letter-spacing:.08em}
+  .nav .btn.header-quote{display:none}
+  .lightbox-nav.prev{left:4px}
+  .lightbox-nav.next{right:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<style id="nojs-visible">.reveal,.project-card,.project-card img,.hero-media img{opacity:1!important;visibility:visible!important;transform:none!important}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top" id="top">
+      <span class="brand-name">NALDO'S</span>
+      <span class="brand-sub">Roller Shutter Doors · Automotive · Steel Works</span>
+    </a>
+    <div class="nav-actions">
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <details class="nav-mobile">
+        <summary aria-label="Open menu">Menu</summary>
+        <nav class="nav-mobile-panel" aria-label="Mobile">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="tel:+27796951572">Call 079 695 1572</a>
+        </nav>
+      </details>
+      <a class="btn small header-quote" href="tel:+27796951572">Request a quote</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" aria-label="Introduction">
+  <div class="hero-media" aria-hidden="true">
+    <img src="images/hero-embed.jpg" alt="" width="1400" height="786" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">Your business. Your workmanship.</div>
+    <h1>Strong Steel.<br><span>Reliable Solutions.</span></h1>
+    <div class="metal-bar" aria-hidden="true"></div>
+    <p>Roller shutter doors, steel gates and custom steelwork, automotive repairs, garage doors, welding, burglar bars and solar panel installations — based in Rewlatch, Johannesburg.</p>
+    <div class="hero-actions">
+      <a class="btn" href="tel:+27796951572">Call for a quote</a>
+      <a class="btn ghost" href="#projects">View projects</a>
+    </div>
+    <div class="location-chip">12 Rewlatch Road, Rewlatch 2197, Johannesburg</div>
+  </div>
+</section>
+
+<main id="main">
+  <section id="services">
+    <div class="wrap">
+      <div class="eyebrow">What we do</div>
+      <h2>Our Services</h2>
+      <p class="lead">Call to discuss your requirements and request a quotation. Tell us the job location, measurements and what you need done.</p>
+      <div class="grid">
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Roller Shutter Doors</h3><p>Installation and repair of roller shutter doors for homes and businesses.</p></article>
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Steel Gates &amp; Custom Work</h3><p>Steel gates, custom fabrication and fitted steelwork to your brief.</p></article>
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Solar Panel Installations</h3><p>Solar panel installation services — discuss your site and requirements with us.</p></article>
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Steel Fabrication &amp; Welding</h3><p>Custom steelwork and welding for new builds and repairs.</p></article>
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Gates &amp; Burglar Bars</h3><p>Security gates and burglar bars for controlled access and peace of mind.</p></article>
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Automotive Repairs</h3><p>Discuss automotive repair needs and get a practical quotation.</p></article>
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Garage Doors</h3><p>Garage door options sized and fitted for your property.</p></article>
+        <article class="card reveal"><div class="card-accent" aria-hidden="true"></div><h3>Custom Steel Structures</h3><p>Framework and custom steel structures for your project brief.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow">Our work</div>
+      <h2>Project gallery</h2>
+      <p class="lead">Selected photos from recent jobs. Captions describe what is shown; some shots are work in progress.</p>
+      <div class="filters" role="toolbar" aria-label="Filter project photos">
+<button type="button" data-filter="all" aria-pressed="true">All</button>
+<button type="button" data-filter="shutters" aria-pressed="false">Roller shutters</button>
+<button type="button" data-filter="steel" aria-pressed="false">Steel buildings</button>
+<button type="button" data-filter="gates" aria-pressed="false">Gates &amp; fencing</button>
+<button type="button" data-filter="railings" aria-pressed="false">Stairs &amp; handrails</button>
+</div>
+      <div class="project-gallery">
+
+    <figure class="project-card reveal" data-category="steel" data-index="0">
+      <button type="button" class="open" data-full="images/steel-warehouse-exterior.jpg" data-title="Steel warehouse building" data-caption="Steel-clad warehouse structure on site." aria-label="Open photo: Steel warehouse building">
+        <div class="thumb"><img src="images/steel-warehouse-exterior-thumb.jpg" alt="Steel warehouse building — Steel-clad warehouse structure on site." width="720" height="404" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Steel warehouse building</h3>
+        <p>Steel-clad warehouse structure on site.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="1">
+      <button type="button" class="open" data-full="images/roller-shutters-commercial-row.jpg" data-title="Commercial roller shutters" data-caption="Row of charcoal roller shutter doors on a brick commercial building." aria-label="Open photo: Commercial roller shutters">
+        <div class="thumb"><img src="images/roller-shutters-commercial-row-thumb.jpg" alt="Commercial roller shutters — Row of charcoal roller shutter doors on a brick commercial building." width="572" height="430" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Commercial roller shutters</h3>
+        <p>Row of charcoal roller shutter doors on a brick commercial building.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="2">
+      <button type="button" class="open" data-full="images/roller-shutters-long-row.jpg" data-title="Industrial shutter bay doors" data-caption="Long run of industrial roller shutter doors along a warehouse frontage." aria-label="Open photo: Industrial shutter bay doors">
+        <div class="thumb"><img src="images/roller-shutters-long-row-thumb.jpg" alt="Industrial shutter bay doors — Long run of industrial roller shutter doors along a warehouse frontage." width="572" height="430" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Industrial shutter bay doors</h3>
+        <p>Long run of industrial roller shutter doors along a warehouse frontage.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="3">
+      <button type="button" class="open" data-full="images/roller-shutter-workshop.jpg" data-title="Workshop roller shutter" data-caption="Large galvanised roller shutter installed in a workshop opening." aria-label="Open photo: Workshop roller shutter">
+        <div class="thumb"><img src="images/roller-shutter-workshop-thumb.jpg" alt="Workshop roller shutter — Large galvanised roller shutter installed in a workshop opening." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Workshop roller shutter</h3>
+        <p>Large galvanised roller shutter installed in a workshop opening.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="4">
+      <button type="button" class="open" data-full="images/roller-shutter-brick-opening.jpg" data-title="Roller shutter in brick wall" data-caption="Silver roller shutter fitted into a brick wall opening." aria-label="Open photo: Roller shutter in brick wall">
+        <div class="thumb"><img src="images/roller-shutter-brick-opening-thumb.jpg" alt="Roller shutter in brick wall — Silver roller shutter fitted into a brick wall opening." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Roller shutter in brick wall</h3>
+        <p>Silver roller shutter fitted into a brick wall opening.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="5">
+      <button type="button" class="open" data-full="images/roller-shutter-service-wip.jpg" data-title="Roller shutter installation in progress" data-caption="Work in progress: roller shutter being fitted on a brick facade." aria-label="Open photo: Roller shutter installation in progress">
+        <div class="thumb"><img src="images/roller-shutter-service-wip-thumb.jpg" alt="Roller shutter installation in progress — Work in progress: roller shutter being fitted on a brick facade." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Roller shutter installation in progress</h3>
+        <p>Work in progress: roller shutter being fitted on a brick facade.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="6">
+      <button type="button" class="open" data-full="images/roller-shutter-scaffolding-wip.jpg" data-title="Shutter fitting with scaffolding" data-caption="Work in progress: scaffolding in place during roller shutter installation." aria-label="Open photo: Shutter fitting with scaffolding">
+        <div class="thumb"><img src="images/roller-shutter-scaffolding-wip-thumb.jpg" alt="Shutter fitting with scaffolding — Work in progress: scaffolding in place during roller shutter installation." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Shutter fitting with scaffolding</h3>
+        <p>Work in progress: scaffolding in place during roller shutter installation.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="7">
+      <button type="button" class="open" data-full="images/roller-shutters-paired.jpg" data-title="Paired roller shutters" data-caption="Two silver roller shutters installed on a brick facade." aria-label="Open photo: Paired roller shutters">
+        <div class="thumb"><img src="images/roller-shutters-paired-thumb.jpg" alt="Paired roller shutters — Two silver roller shutters installed on a brick facade." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Paired roller shutters</h3>
+        <p>Two silver roller shutters installed on a brick facade.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="8">
+      <button type="button" class="open" data-full="images/roller-shutter-container.jpg" data-title="Container roller shutter" data-caption="Roller shutter fitted to a shipping-container opening." aria-label="Open photo: Container roller shutter">
+        <div class="thumb"><img src="images/roller-shutter-container-thumb.jpg" alt="Container roller shutter — Roller shutter fitted to a shipping-container opening." width="720" height="960" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Container roller shutter</h3>
+        <p>Roller shutter fitted to a shipping-container opening.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="9">
+      <button type="button" class="open" data-full="images/roller-shutter-height-work-wip.jpg" data-title="High-level shutter work" data-caption="Work in progress: technician working on a large roller shutter from scaffolding." aria-label="Open photo: High-level shutter work">
+        <div class="thumb"><img src="images/roller-shutter-height-work-wip-thumb.jpg" alt="High-level shutter work — Work in progress: technician working on a large roller shutter from scaffolding." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>High-level shutter work</h3>
+        <p>Work in progress: technician working on a large roller shutter from scaffolding.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="10">
+      <button type="button" class="open" data-full="images/roller-shutter-interior-bay.jpg" data-title="Interior shutter bay" data-caption="Interior view of a roller shutter and steel roof structure in a workshop bay." aria-label="Open photo: Interior shutter bay">
+        <div class="thumb"><img src="images/roller-shutter-interior-bay-thumb.jpg" alt="Interior shutter bay — Interior view of a roller shutter and steel roof structure in a workshop bay." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Interior shutter bay</h3>
+        <p>Interior view of a roller shutter and steel roof structure in a workshop bay.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="steel" data-index="11">
+      <button type="button" class="open" data-full="images/steel-frame-construction-wip.jpg" data-title="Steel building framework" data-caption="Work in progress: steel building frame and roof trusses on site." aria-label="Open photo: Steel building framework">
+        <div class="thumb"><img src="images/steel-frame-construction-wip-thumb.jpg" alt="Steel building framework — Work in progress: steel building frame and roof trusses on site." width="720" height="405" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Steel building framework</h3>
+        <p>Work in progress: steel building frame and roof trusses on site.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="steel" data-index="12">
+      <button type="button" class="open" data-full="images/steel-frame-site-wip.jpg" data-title="Steel framework on site" data-caption="Work in progress: wide view of a steel frame under construction." aria-label="Open photo: Steel framework on site">
+        <div class="thumb"><img src="images/steel-frame-site-wip-thumb.jpg" alt="Steel framework on site — Work in progress: wide view of a steel frame under construction." width="720" height="404" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Steel framework on site</h3>
+        <p>Work in progress: wide view of a steel frame under construction.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="steel" data-index="13">
+      <button type="button" class="open" data-full="images/steel-clad-warehouse.jpg" data-title="Clad steel warehouse" data-caption="Completed light-coloured corrugated steel warehouse building." aria-label="Open photo: Clad steel warehouse">
+        <div class="thumb"><img src="images/steel-clad-warehouse-thumb.jpg" alt="Clad steel warehouse — Completed light-coloured corrugated steel warehouse building." width="720" height="403" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Clad steel warehouse</h3>
+        <p>Completed light-coloured corrugated steel warehouse building.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="steel" data-index="14">
+      <button type="button" class="open" data-full="images/steel-building-entrance.jpg" data-title="Steel building entrance" data-caption="Front elevation of a corrugated steel building with central entrance." aria-label="Open photo: Steel building entrance">
+        <div class="thumb"><img src="images/steel-building-entrance-thumb.jpg" alt="Steel building entrance — Front elevation of a corrugated steel building with central entrance." width="720" height="404" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Steel building entrance</h3>
+        <p>Front elevation of a corrugated steel building with central entrance.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="steel" data-index="15">
+      <button type="button" class="open" data-full="images/industrial-steel-premises.jpg" data-title="Industrial steel premises" data-caption="Industrial building with steel roof structure and vehicle access." aria-label="Open photo: Industrial steel premises">
+        <div class="thumb"><img src="images/industrial-steel-premises-thumb.jpg" alt="Industrial steel premises — Industrial building with steel roof structure and vehicle access." width="1040" height="780" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Industrial steel premises</h3>
+        <p>Industrial building with steel roof structure and vehicle access.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="steel" data-index="16">
+      <button type="button" class="open" data-full="images/steel-canopy-frame-wip.jpg" data-title="Open steel canopy frame" data-caption="Work in progress: open-sided steel canopy and roof beams." aria-label="Open photo: Open steel canopy frame">
+        <div class="thumb"><img src="images/steel-canopy-frame-wip-thumb.jpg" alt="Open steel canopy frame — Work in progress: open-sided steel canopy and roof beams." width="720" height="406" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Open steel canopy frame</h3>
+        <p>Work in progress: open-sided steel canopy and roof beams.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="gates" data-index="17">
+      <button type="button" class="open" data-full="images/palisade-fence-and-gate.jpg" data-title="Palisade fencing and gate" data-caption="Steel palisade fence and gate at an industrial premises." aria-label="Open photo: Palisade fencing and gate">
+        <div class="thumb"><img src="images/palisade-fence-and-gate-thumb.jpg" alt="Palisade fencing and gate — Steel palisade fence and gate at an industrial premises." width="1040" height="780" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Palisade fencing and gate</h3>
+        <p>Steel palisade fence and gate at an industrial premises.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="railings" data-index="18">
+      <button type="button" class="open" data-full="images/steel-handrail-stairs.jpg" data-title="Staircase handrail" data-caption="Outdoor concrete stairs with a fitted metal handrail." aria-label="Open photo: Staircase handrail">
+        <div class="thumb"><img src="images/steel-handrail-stairs-thumb.jpg" alt="Staircase handrail — Outdoor concrete stairs with a fitted metal handrail." width="780" height="1040" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Staircase handrail</h3>
+        <p>Outdoor concrete stairs with a fitted metal handrail.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="project-card reveal" data-category="shutters" data-index="19">
+      <button type="button" class="open" data-full="images/roller-shutters-interior-light.jpg" data-title="Shutter doors from inside" data-caption="Interior view looking toward closed commercial roller shutter doors." aria-label="Open photo: Shutter doors from inside">
+        <div class="thumb"><img src="images/roller-shutters-interior-light-thumb.jpg" alt="Shutter doors from inside — Interior view looking toward closed commercial roller shutter doors." width="572" height="430" decoding="async"></div>
+      </button>
+      <figcaption>
+        <h3>Shutter doors from inside</h3>
+        <p>Interior view looking toward closed commercial roller shutter doors.</p>
+      </figcaption>
+    </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="eyebrow">About Naldo's</div>
+      <h2>Practical solutions for your project</h2>
+      <div class="metal-bar" aria-hidden="true"></div>
+      <p class="lead">Naldo's Roller Shutter Doors, Automotive &amp; Steel Works is managed by Rhenvin Human and based at 12 Rewlatch Road, Rewlatch 2197, Johannesburg. We offer roller shutter door installation and repair, steel gates and custom work, welding, automotive repairs, garage doors, burglar bars and solar panel installations. Tell us what you need and share photos or measurements to help us quote accurately.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Request a quotation</h2>
+        <div class="contact-grid">
+          <div>
+            <dl>
+              <div>
+                <dt>Manager</dt>
+                <dd>Rhenvin Human</dd>
+              </div>
+              <div>
+                <dt>Phone</dt>
+                <dd><a class="tel" href="tel:+27796951572">079 695 1572</a></dd>
+              </div>
+              <div>
+                <dt>Location</dt>
+                <dd>12 Rewlatch Road<br>Rewlatch 2197<br>Johannesburg</dd>
+              </div>
+            </dl>
+            <p class="note">Call to confirm whether we can assist with your job and location. Email will be added once confirmed.</p>
+          </div>
+          <div>
+            <p class="lead" style="margin-top:0">Share the job location, measurements and photos so we can quote accurately.</p>
+            <div class="hero-actions">
+              <a class="btn" href="tel:+27796951572">Call 079 695 1572</a>
+              <a class="btn ghost" href="tel:+27796951572">Request a quote by phone</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <strong>Naldo's Roller Shutter Doors, Automotive &amp; Steel Works</strong><br>
+    Manager: Rhenvin Human · <a href="tel:+27796951572" style="color:var(--silver);text-decoration:none">079 695 1572</a><br>
+    12 Rewlatch Road, Rewlatch 2197, Johannesburg
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project photo viewer">
+  <div class="lightbox-inner">
+    <button type="button" class="lightbox-close" aria-label="Close photo viewer">×</button>
+    <button type="button" class="lightbox-nav prev" aria-label="Previous photo">‹</button>
+    <button type="button" class="lightbox-nav next" aria-label="Next photo">›</button>
+    <img alt="">
+    <div class="lightbox-cap"><strong class="lb-title"></strong><span class="lb-cap"></span></div>
+  </div>
+</div>
+
+<script>
+
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduce) {
+    items.forEach(function(i){ i.classList.add('is-visible'); });
+  } else if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, {threshold:0.12});
+    items.forEach(function(i){ obs.observe(i); });
+  } else {
+    items.forEach(function(i){ i.classList.add('is-visible'); });
+  }
+
+  var mobile = document.querySelector('.nav-mobile');
+  if (mobile) {
+    mobile.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){ mobile.removeAttribute('open'); });
+    });
+  }
+
+  // Filters
+  var filterBar = document.querySelector('.filters');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.project-card'));
+  if (filterBar) {
+    filterBar.addEventListener('click', function(ev){
+      var btn = ev.target.closest('button[data-filter]');
+      if (!btn) return;
+      var f = btn.getAttribute('data-filter');
+      filterBar.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b===btn ? 'true' : 'false'); });
+      cards.forEach(function(card){
+        var show = (f==='all') || card.getAttribute('data-category')===f;
+        card.classList.toggle('is-hidden', !show);
+      });
+    });
+  }
+
+  // Lightbox
+  var lb = document.getElementById('lightbox');
+  if (!lb) return;
+  var lbImg = lb.querySelector('img');
+  var lbTitle = lb.querySelector('.lb-title');
+  var lbCap = lb.querySelector('.lb-cap');
+  var openButtons = Array.prototype.slice.call(document.querySelectorAll('.project-card button.open'));
+  var current = -1;
+  var lastFocus = null;
+
+  function visibleButtons(){
+    return openButtons.filter(function(b){
+      return !b.closest('.project-card').classList.contains('is-hidden');
+    });
+  }
+
+  function show(index){
+    var list = visibleButtons();
+    if (!list.length) return;
+    current = (index + list.length) % list.length;
+    var btn = list[current];
+    lbImg.src = btn.getAttribute('data-full');
+    lbImg.alt = btn.getAttribute('data-title') || '';
+    lbTitle.textContent = btn.getAttribute('data-title') || '';
+    lbCap.textContent = btn.getAttribute('data-caption') || '';
+  }
+
+  function openAt(btn){
+    lastFocus = document.activeElement;
+    var list = visibleButtons();
+    current = list.indexOf(btn);
+    if (current < 0) current = 0;
+    show(current);
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden','false');
+    lb.querySelector('.lightbox-close').focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close(){
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden','true');
+    lbImg.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  openButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){ openAt(btn); });
+  });
+  lb.querySelector('.lightbox-close').addEventListener('click', close);
+  lb.querySelector('.lightbox-nav.prev').addEventListener('click', function(){ show(current-1); });
+  lb.querySelector('.lightbox-nav.next').addEventListener('click', function(){ show(current+1); });
+  lb.addEventListener('click', function(ev){ if (ev.target===lb) close(); });
+  document.addEventListener('keydown', function(ev){
+    if (!lb.classList.contains('is-open')) return;
+    if (ev.key==='Escape') close();
+    else if (ev.key==='ArrowLeft') show(current-1);
+    else if (ev.key==='ArrowRight') show(current+1);
+  });
+})();
+
+</script>
+</body>
+</html>
