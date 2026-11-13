@@ -25,6 +25,8 @@ BASE_PATH = "/-naldos-visible"
 
 PHONE_DISPLAY = "079 695 1572"
 PHONE_TEL = "tel:+27796951572"
+WHATSAPP_URL = "https://wa.me/27796951572"
+WHATSAPP_LABEL = f"WhatsApp {PHONE_DISPLAY}"
 MANAGER = "Rhenvin Human"
 ADDRESS_LINES = ("12 Rewlatch Road", "Rewlatch 2197", "Johannesburg")
 BUSINESS = "Naldo's Roller Shutter Doors, Automotive & Steel Works"
@@ -53,8 +55,6 @@ SOLAR_FULL = (
 GATE_MOTOR_FULL = "images/gate-motor-installation.jpg"
 
 FORBIDDEN_MARKERS = (
-    "whatsapp",
-    "wa.me",
     "mailto:",
     "testimonial",
     "accreditation",
@@ -280,6 +280,49 @@ def check_pages_workflow() -> None:
     check("python3 tests/test_site.py" in checks, "site checks workflow does not run the test")
 
 
+def check_whatsapp(doc: Node, raw: str) -> None:
+    """Allow only the published WhatsApp contact, in the same places as the phone."""
+    links = [
+        node
+        for node in doc.find_all("a")
+        if "wa.me" in node.attrs.get("href", "").lower() or "whatsapp" in node.attrs.get("href", "").lower()
+    ]
+    check(links, "WhatsApp contact link is missing")
+    for node in links:
+        href = node.attrs.get("href", "")
+        check(href == WHATSAPP_URL, f"only {WHATSAPP_URL} is allowed, found {href}")
+        check(node.attrs.get("target") == "_blank", "WhatsApp link must open in a new tab")
+        check("noopener" in node.attrs.get("rel", "").split(), 'WhatsApp link must include rel="noopener"')
+        visible = re.sub(r"\s+", " ", node.text()).strip()
+        check(visible == WHATSAPP_LABEL, f"WhatsApp label should be {WHATSAPP_LABEL!r}, found {visible!r}")
+        check(
+            node.attrs.get("aria-label", "").strip() == WHATSAPP_LABEL,
+            "WhatsApp link needs an accessible label with the phone number",
+        )
+        check("btn" in node.attrs.get("class", "").split(), "WhatsApp link should use the existing button style")
+        icons = node.find_all("svg")
+        check(len(icons) == 1, "WhatsApp link needs one icon")
+        check(icons[0].attrs.get("aria-hidden") == "true", "WhatsApp icon should be hidden from assistive tech")
+
+    for found in re.findall(r"https?://[^\s\"'<>]+", raw, flags=re.I):
+        lowered = found.lower()
+        if "wa.me" in lowered or "whatsapp" in lowered:
+            check(found == WHATSAPP_URL, f"unexpected WhatsApp URL: {found}")
+    check(raw.count(WHATSAPP_URL) == len(links), "WhatsApp URL appears outside the allowed links")
+    check("api.whatsapp.com" not in raw.lower(), "unexpected WhatsApp API link")
+    check("web.whatsapp.com" not in raw.lower(), "unexpected WhatsApp Web link")
+
+    def region(start: str, end: str) -> str:
+        begin = raw.find(start)
+        finish = raw.find(end, begin + len(start)) if begin != -1 else -1
+        check(begin != -1 and finish != -1, f"could not find {start} … {end}")
+        return raw[begin:finish]
+
+    check(WHATSAPP_URL in region("<header", "<section"), "WhatsApp link missing from the header call contact")
+    check(WHATSAPP_URL in region('class="hero"', 'id="main"'), "WhatsApp link missing from the hero call-to-action")
+    check(WHATSAPP_URL in region('id="contact"', "<footer"), "WhatsApp link missing from the contact section")
+
+
 def main() -> None:
     check(INDEX.is_file(), "index.html is missing")
     raw = INDEX.read_text(encoding="utf-8")
@@ -334,6 +377,7 @@ def main() -> None:
     ]
     check(tel_links, "no telephone links")
     check(all(href == PHONE_TEL for href in tel_links), f"unexpected tel links: {tel_links}")
+    check_whatsapp(doc, raw)
 
     main = doc.find_all("main")
     check(len(main) == 1 and main[0].attrs.get("id") == "main", "main landmark missing")
