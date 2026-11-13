@@ -35,4 +35,4 @@ Open `http://127.0.0.1:8080/` (the same files, at the server root) or serve a pa
 
 ## Content on the page
 
-Business name, manager (Rhenvin Human), phone (`079 695 1572`), and address (12 Rewlatch Road, Rewlatch 2197, Johannesburg) are the details already in the approved page. The same number is a WhatsApp contact (`https://wa.me/27796951572`). Email is not listed. Solar panel installation is a service, and the project gallery includes solar installation photos.
+Business name, manager (Rhenvin Human), phone (`079 695 1572`), email (`arnaldohuman@gmail.com`), and address (12 Rewlatch Road, Rewlatch 2197, Johannesburg) are the details already in the approved page. The same number is a WhatsApp contact (`https://wa.me/27796951572`). The email is a `mailto:arnaldohuman@gmail.com` link for Rhenvin Human. No other email address is listed. Solar panel installation is a service, and the project gallery includes solar installation photos.
